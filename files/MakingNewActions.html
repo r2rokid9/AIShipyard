@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>Making New Actions</title>
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+body {
+  margin: 5px 5px 5px 5px;
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #000080;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #000080;
+ text-decoration: underline;
+}
+span.rvts6 /* Font Hint */
+{
+ color: #a0a0a0;
+}
+span.rvts7 /* Font Hint Title */
+{
+ font-size: 15pt;
+ font-family: 'Tahoma', 'Geneva', sans-serif;
+ font-weight: bold;
+ color: #696969;
+}
+span.rvts8 /* Font Hint Bold */
+{
+ font-weight: bold;
+ color: #a0a0a0;
+}
+span.rvts9 /* Font Hint Italic */
+{
+ font-style: italic;
+ color: #a0a0a0;
+}
+span.rvts10
+{
+ font-weight: bold;
+}
+span.rvts11 /* Font Style */
+{
+ font-size: 16pt;
+ font-family: 'Tahoma', 'Geneva', sans-serif;
+ color: #ffffff;
+}
+span.rvts12 /* Font Style */
+{
+ font-family: 'MS Sans Serif', 'Geneva', sans-serif;
+ color: #808080;
+}
+span.rvts13 /* Font Style */
+{
+ font-family: 'Verdana', 'Geneva', sans-serif;
+ font-style: italic;
+ color: #c0c0c0;
+}
+a.rvts14, span.rvts14 /* Font Style */
+{
+ font-family: 'Verdana', 'Geneva', sans-serif;
+ font-style: italic;
+ color: #6666ff;
+ text-decoration: underline;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2 /* Paragraph Style */
+{
+ background: #9fbed0;
+ padding: 5px 5px 2px 5px;
+ margin: -5px -5px 18px -5px;
+}
+.rvps3 /* Paragraph Style */
+{
+ text-align: center;
+ background: #e4e4e4;
+ margin: 20px 0px 0px 0px;
+}
+.rvps4 /* Paragraph Style */
+{
+ border-color: #c0c0c0;
+ border-style: solid;
+ border-width: 1px;
+ border-right: none;
+ border-bottom: none;
+ border-left: none;
+ background: #ffffff;
+ padding: 3px 0px 0px 0px;
+ margin: 27px 0px 0px 0px;
+}
+--></style>
+<link rel="StyleSheet" href="hnd.css" type="text/css"/>
+<script type="text/javascript">if(top.frames.length == 0) { top.location.href="../aishipyardhelp.htm?MakingNewActions.html"; }</script>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="jquery.cookie.js"></script>
+<script type="text/javascript" src="hnd.js"></script>
+<meta name="generator" content="HelpNDoc Freeware Edition"></head>
+<body>
+<p class=rvps2><span class=rvts11>Making New Actions</span></p>
+<p><br></p>
+<p><br></p>
+<p class=rvps1><img border=0 alt="" hspace=1 vspace=1 src="img_21.png"></p>
+<p><br></p>
+<p>First select <span class=rvts10>Forge &gt; Strategy Database</span>.</p>
+<p><br></p>
+<p class=rvps1><img border=0 alt="" hspace=1 vspace=1 src="img_22.png"></p>
+<p><br></p>
+<p>This is the overview of the controls in the database.</p>
+<p><br></p>
+<p>Actions List: </p>
+<p><span class=rvts10>[+]</span> - adds a new action to the list</p>
+<p><span class=rvts10>[-]</span> - removes the selected action specified in the drop down</p>
+<p><span class=rvts10>[Ren]</span> - renames the selected action</p>
+<p><br></p>
+<p>Action Description:</p>
+<p><span class=rvts10>[+] </span>- save changes to the description</p>
+<p><br></p>
+<p>Action Java Code:</p>
+<p><span class=rvts10>Advanced Add</span> - allows you to input your own verbatim java code. For those who know what they're doing.</p>
+<p><span class=rvts10>Easy Add</span> - For non-programmers</p>
+<p><span class=rvts10>View</span> - view the code contents in java format</p>
+<p><br></p>
+<p>The first step is to make a new action by giving it a name. So press the Actions List Add button.</p>
+<p><br></p>
+<p class=rvps1><img border=0 alt="" hspace=1 vspace=1 src="img_23.jpg"></p>
+<p><br></p>
+<p>Enter a name for your action and press OK. you'll be returned to the previous window. </p>
+<p><br></p>
+<p class=rvps1><img border=0 alt="" hspace=1 vspace=1 src="img_24.png"></p>
+<p><br></p>
+<p>Pick your new action from the drop-down menu. Add in a description you like, and then pick either the <span class=rvts10>Advanced Add</span> or <span class=rvts10>Easy Add</span> to add a new Action.</p>
+<p><br></p>
+<p>Advanced Add</p>
+<hr noshade size=1 style="color : #000000">
+<p><br></p>
+<p class=rvps1><img border=0 alt="" hspace=1 vspace=1 src="img_25.png"></p>
+<p class=rvps1><br></p>
+<p>Easy Add</p>
+<hr noshade size=1 style="color : #000000">
+<p><br></p>
+<p class=rvps1><img border=0 alt="" hspace=1 vspace=1 src="img_26.png"></p>
+<p><br></p>
+<p>Easy add lets you concatenate or put together an action from a set of basic actions in the drop down menu. </p>
+<p><br></p>
+<p class=rvps1><img border=0 alt="" hspace=1 vspace=1 src="img_27.png"></p>
+<p><br></p>
+<p>The actions on the Action List run successively which means they are done one after the other, first-come-first-serve. </p>
+<p>Press the<span class=rvts10> Generate Code</span> button when you're done to finalize the action.</p>
+<p><br></p>
+<p>View</p>
+<hr noshade size=1 style="color : #000000">
+<p><br></p>
+<p>If you ever want to see the code of an action, click the <span class=rvts10>View</span> button to display the code.</p>
+<p><br></p>
+<p class=rvps1><img border=0 alt="" hspace=1 vspace=1 src="img_28.png"></p>
+<p><br></p>
+<p class=rvps3><span class=rvts12>Copyright © 2010, DGDL/LIC</span></p>
+<p class=rvps4><span class=rvts13>Created with the Freeware Edition of HelpNDoc: </span><a class=rvts14 href="http://www.helpndoc.com" target="_blank">Easily create PDF Help documents</a></p>
+</body></html>

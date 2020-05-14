@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>Adding to Strategies</title>
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+body {
+  margin: 5px 5px 5px 5px;
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #000080;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #000080;
+ text-decoration: underline;
+}
+span.rvts6 /* Font Hint */
+{
+ color: #a0a0a0;
+}
+span.rvts7 /* Font Hint Title */
+{
+ font-size: 15pt;
+ font-family: 'Tahoma', 'Geneva', sans-serif;
+ font-weight: bold;
+ color: #696969;
+}
+span.rvts8 /* Font Hint Bold */
+{
+ font-weight: bold;
+ color: #a0a0a0;
+}
+span.rvts9 /* Font Hint Italic */
+{
+ font-style: italic;
+ color: #a0a0a0;
+}
+span.rvts10
+{
+ font-weight: bold;
+}
+span.rvts11
+{
+ font-style: italic;
+}
+span.rvts12 /* Font Style */
+{
+ font-size: 16pt;
+ font-family: 'Tahoma', 'Geneva', sans-serif;
+ color: #ffffff;
+}
+span.rvts13 /* Font Style */
+{
+ font-family: 'MS Sans Serif', 'Geneva', sans-serif;
+ color: #808080;
+}
+span.rvts14 /* Font Style */
+{
+ font-family: 'Verdana', 'Geneva', sans-serif;
+ font-style: italic;
+ color: #c0c0c0;
+}
+a.rvts15, span.rvts15 /* Font Style */
+{
+ font-family: 'Verdana', 'Geneva', sans-serif;
+ font-style: italic;
+ color: #6666ff;
+ text-decoration: underline;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2 /* Paragraph Style */
+{
+ background: #9fbed0;
+ padding: 5px 5px 2px 5px;
+ margin: -5px -5px 18px -5px;
+}
+.rvps3 /* Paragraph Style */
+{
+ text-align: center;
+ background: #e4e4e4;
+ margin: 20px 0px 0px 0px;
+}
+.rvps4 /* Paragraph Style */
+{
+ border-color: #c0c0c0;
+ border-style: solid;
+ border-width: 1px;
+ border-right: none;
+ border-bottom: none;
+ border-left: none;
+ background: #ffffff;
+ padding: 3px 0px 0px 0px;
+ margin: 27px 0px 0px 0px;
+}
+--></style>
+<link rel="StyleSheet" href="hnd.css" type="text/css"/>
+<script type="text/javascript">if(top.frames.length == 0) { top.location.href="../aishipyardhelp.htm?Strategies.html"; }</script>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="jquery.cookie.js"></script>
+<script type="text/javascript" src="hnd.js"></script>
+<meta name="generator" content="HelpNDoc Freeware Edition"></head>
+<body>
+<p class=rvps2><span class=rvts12>Strategies</span></p>
+<p><span class=rvts10>Strategies</span> are actions undertaken by the bot given certain conditions. They are arranged by priority, that as long as the first strategy is true, it will continue to do so. If not true, the next priority strategy is checked.</p>
+<p><br></p>
+<hr noshade size=1 style="color : #000000">
+<p class=rvps1><br></p>
+<p class=rvps1><img border=0 alt="" hspace=1 vspace=1 src="img_17.png"></p>
+<p><br></p>
+<p>To add an entry to the Strategy, select an existing Battle Mode and press the <span class=rvts10>[+]</span> button to the right of the Strategy Triggers.</p>
+<p><br></p>
+<p><br></p>
+<p class=rvps1><img border=0 alt="" hspace=1 vspace=1 src="img_18.png"></p>
+<p class=rvps1><span class=rvts10><br></span></p>
+<p class=rvps1><img border=0 alt="" hspace=1 vspace=1 src="img_19.png"></p>
+<p><br></p>
+<p>The condition editor will appear. Conditions can be treated as layers, which means one can have nested-if statements. (i.e. condition1AND(condition2ORcondition3) )</p>
+<p>The parameters are as follows:</p>
+<p><br></p>
+<p><span class=rvts10>Condition drop-down</span>: Allows you to choose one of the existing conditions in the database. Choose <span class=rvts11>SUBCONDITION</span> if you want to use nested conditions.</p>
+<p><span class=rvts10>Conjunctions</span>: Let's you choose among AND, OR, or END. the first two should be familiar logical operations. To end the conditions you want, select END to finish with the last condition. So given <span class=rvts11>condition1ANDcondition2ORcondition3</span>, it will look like <span class=rvts11>condition1 AND condition2 OR condition3 END</span>.</p>
+<p><span class=rvts10>Add</span>: When you're done with the previous two, press this to add it to the list.</p>
+<p><br></p>
+<p><span class=rvts10>Delete Selected Condition</span>: The selected entry on the table will be deleted.</p>
+<p><span class=rvts10>Finalize List</span>: Can only be used when the END conjunction has been used. This signifies the end of the condition set.</p>
+<p><span class=rvts10>Close</span>: Goes back to main window.</p>
+<p><br></p>
+<p>After Finalizing...</p>
+<p><br></p>
+<p class=rvps1><img border=0 alt="" hspace=1 vspace=1 src="img_20.png"></p>
+<p><br></p>
+<p>...you will be at the High Level Actions Editor. This dictates the actions to be done by the bot at that condition. </p>
+<p><br></p>
+<p><span class=rvts10>Action DropDown</span>: Select from a list of actions available.</p>
+<p><span class=rvts10>Add</span>: appends the selected action to the table.</p>
+<p><br></p>
+<p><span class=rvts10>Delete Selected Condition</span>: The selected entry on the table will be deleted.</p>
+<p><span class=rvts10>Generate Code</span>: Appends the action to the main window.</p>
+<p><span class=rvts10>Close</span>: Goes back to main window.</p>
+<p><br></p>
+<p class=rvps3><span class=rvts13>Copyright © 2010, DGDL/LIC</span></p>
+<p class=rvps4><span class=rvts14>Created with the Freeware Edition of HelpNDoc: </span><a class=rvts15 href="http://www.helpndoc.com" target="_blank">Easily create CHM Help documents</a></p>
+</body></html>
