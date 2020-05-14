@@ -1,0 +1,232 @@
+
+//import GUIClass.*;
+import aicapn.bot.Bot;
+import aicapn.resources.Items;
+import java.awt.Point;
+import java.util.ArrayList;
+import java.util.Vector;
+import aicapn.resources.Resources;
+import aicapn.world.*;
+import java.io.PrintWriter;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.io.IOException;
+import java.net.UnknownHostException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class //INSERT BOT NAME HERE// extends Bot{
+
+    private CrateState item = null;
+    private ShipState target = null;
+	private ArrayList<ShipState> enemies;
+    private ArrayList<CrateState> crates;
+	private Boolean bDone = false;
+    private String previousMessage;
+
+    public //INSERT BOT NAME HERE//() {
+        name="//INSERT BOT NAME HERE//";
+        previousMessage = "";		
+    }
+
+    /**
+     * Action thread of the bot
+     */
+    @Override
+    public void action() {             
+            //try{
+		
+				PrintWriter pw = null;
+				try {
+					Socket s = new Socket(InetAddress.getLocalHost().getHostAddress(), 2000); //who you want to listen to
+					pw = new PrintWriter(s.getOutputStream(), true);
+				} catch (UnknownHostException ex) {
+					Logger.getLogger(//INSERT BOT NAME HERE//.class.getName()).log(Level.SEVERE, null, ex);
+				} catch (IOException ex) {
+					Logger.getLogger(//INSERT BOT NAME HERE//.class.getName()).log(Level.SEVERE, null, ex);
+				}
+
+                //INSERT AI ENGINE CODE HERE//
+
+            //}catch(OutOfThisWorldException o){ o.printStackTrace(); }
+
+    }
+
+    //INSERT METHODS HERE// //methods
+
+    // =============================== METHODS ================================== //
+
+    Vector<Point> currentPath = new Vector<Point>();
+    
+    public void goTo(int x, int y)
+    {
+        try {
+            currentPath = findPath(x, y);
+
+            sailTo(currentPath.firstElement().x, currentPath.firstElement().y);
+            currentPath.remove(0);
+
+        } catch (Exception ex) {
+            Logger.getLogger(//INSERT BOT NAME HERE//.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    /**
+     * Moves the ship towards an x,y coordinate
+     * @param x x coordinate
+     * @param y y coordinate
+     */
+    public void sailTo(int x, int y)
+    {
+            if(ship.getX()>x)
+                ship.moveLeft();
+            else
+                if(ship.getX()<x)
+                    ship.moveRight();
+                else
+                    if(ship.getY()>y)
+                        ship.moveUp();
+                    else
+                        if(ship.getY()<y)
+                            ship.moveDown();
+    }
+
+    /**
+     * Creates a path from the bot to a goal location through breadth first search
+     * @param x x coordinate
+     * @param y y coordinate
+     * @return Path
+     */
+    public Vector<Point> findPath(int x, int y) throws Exception
+    {
+        ArrayList<Node> visited=new ArrayList<Node>();
+        ArrayList<Node> pending=new ArrayList<Node>();
+
+        Node top, bottom, left, right, current;
+        top=bottom=left=right=null;
+        current=new Node(ship.getX(), ship.getY(), null);
+        visited.add(new Node(ship.getX(),ship.getY(),current));
+        if(ship.getX()-1>0 && world.isPassable(ship.getX()-1,ship.getY()))
+            left=new Node(ship.getX()-1, ship.getY(),current);
+        if(ship.getX()+1<40 && world.isPassable(ship.getX()+1,ship.getY()))
+            right=new Node(ship.getX()+1, ship.getY(),current);
+        if(ship.getY()-1>0 && world.isPassable(ship.getX(),ship.getY()-1))
+            top=new Node(ship.getX(), ship.getY()-1,current);
+        if(ship.getY()+1<30 && world.isPassable(ship.getX(),ship.getY()+1))
+            bottom=new Node(ship.getX(), ship.getY()+1,current);
+        if(left!=null && !visited.contains(left))
+            pending.add(left);
+        if(top!=null && !visited.contains(top))
+            pending.add(top);
+        if(right!=null&&!visited.contains(right))
+            pending.add(right);
+        if(bottom!=null&&!visited.contains(bottom))
+            pending.add(bottom);
+        while(pending.size()>0)
+        {
+            visited.add(pending.get(0));
+            current=pending.get(0);
+            if(x==current.x && y==current.y)
+                break;
+            top=bottom=left=right=null;
+            if(current.getX()-1>0 && world.isPassable(current.getX()-1,current.getY()))// && world.getMap()[((int)current.getX()-1)/20][((int)current.getY())/20]==Resources.PASSABLE)
+                left=new Node((int)current.getX()-1, (int)current.getY(), current);
+            if(current.getX()+1<Resources.MAP_WIDTH&&world.isPassable(current.getX()+1,current.getY()))// && world.getMap()[((int)current.getX()+1)/20][((int)current.getY())/20]==Resources.PASSABLE)
+                right=new Node((int)current.getX()+1, (int)current.getY(), current);
+            if(current.getY()-1>0 && world.isPassable(current.getX(),current.getY()-1))// && world.getMap()[((int)current.getX())/20][((int)current.getY()-1)/20]==Resources.PASSABLE)
+                top=new Node((int)current.getX(), (int)current.getY()-1, current);
+            if(current.getY()+1<Resources.MAP_HEIGHT && world.isPassable(current.getX(),current.getY()+1))// && world.getMap()[((int)current.getX())/20][((int)current.getY()+1)/20]==Resources.PASSABLE)
+                bottom=new Node((int)current.getX(), (int)current.getY()+1, current);
+            if(left!=null&&!visited.contains(left)&&!pending.contains(left))
+                pending.add(left);
+            if(top!=null && !visited.contains(top)&&!pending.contains(top))
+                pending.add(top);
+            if(right!=null && !visited.contains(right)&&!pending.contains(right))
+                pending.add(right);
+            if(bottom!=null && !visited.contains(bottom)&&!pending.contains(bottom))
+                pending.add(bottom);
+            pending.remove(0);
+        }
+        Vector<Point> path=new Vector<Point>();
+        while(current.parent!=null)
+        {
+            path.insertElementAt(new Point(current.getX(),current.getY()),0);
+            current=current.getParent();
+        }
+
+        return path;
+    }
+/**
+ * Represents a node in a path
+ */
+ class Node{
+     private int x;
+     private int y;
+     private Node parent;
+
+        /**
+         * Creates a node
+         * @param x x coordinate of the node
+         * @param y y coordinate of the node
+         * @param parent Previous node in a path
+         */
+        public Node(int x, int y,Node parent) {
+            this.x=x;
+            this.y=y;
+            this.parent=parent;
+        }
+        /**
+         * Retrieves the preceeding node
+         * @return
+         */
+        public //INSERT BOT NAME HERE//.Node getParent() {
+            return parent;
+        }
+
+        /**
+         * Sets the preceeding node
+         * @param parent
+         */
+        public void setParent(//INSERT BOT NAME HERE//.Node parent) {
+            this.parent = parent;
+        }
+
+        /**
+         * Gets the x coordinate of the node
+         * @return X coordinate
+         */
+        public int getX() {
+            return x;
+        }
+
+        /**
+         * Sets the x coordinate of the node
+         * @param x X coordinate
+         */
+        public void setX(int x) {
+            this.x = x;
+        }
+
+        /**
+         * Retrieves the Y coordinate of the node
+         * @return Y coordinate
+         */
+        public int getY() {
+            return y;
+        }
+
+        /**
+         * Sets the Y coordinate of the node
+         * @param y Y coordinate
+         */
+        public void setY(int y) {
+            this.y = y;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            Node temp=(Node)obj;
+            return this.x==temp.getX()&&this.y==temp.getY();
+        }
+ }
+}
